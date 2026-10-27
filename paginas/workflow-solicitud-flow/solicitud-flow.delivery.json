@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "0bd4f652-abe3-4d17-8f59-b705e1c99d4c",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "paginas/workflow-solicitud-flow/candidate.json",
+  "output": "paginas/workflow-solicitud-flow/solicitud-flow.html",
+  "specification": {
+    "sha256": "0c8b57f378fe57d77fb87b3c70605a5ab46a307a76ba226ff838977f9caeb236",
+    "bytes": 1942
+  },
+  "artifact": {
+    "sha256": "7c96813c728018b5ab43174b0a5371a68e11aeaeef4b4d3e3e7766c182d1c5a9",
+    "bytes": 751110
+  }
+}

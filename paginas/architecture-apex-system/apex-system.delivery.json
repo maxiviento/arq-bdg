@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "981b005a-4aeb-445a-8d14-f3c207b8feda",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "paginas/architecture-apex-system/candidate.json",
+  "output": "paginas/architecture-apex-system/apex-system.html",
+  "specification": {
+    "sha256": "26822da25c2248c38317dc83505c2d86d8bc06857c583a29e904340ed25491d0",
+    "bytes": 6599
+  },
+  "artifact": {
+    "sha256": "3aebfb56b4098358a18ce7be105e98e5cb1954b0205e78ddc32d4ca99c7e9350",
+    "bytes": 788143
+  }
+}

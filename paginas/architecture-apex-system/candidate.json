@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Sistema APEX — Mapa de Casos de Uso",
+    "output": "apex-system.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "solicitudes", "type": "frontend", "label": "Solicitudes", "sublabel": "Pág 107", "pos": [40, 80], "size": [140, 60] },
+    { "id": "evaluacion", "type": "frontend", "label": "Evaluación", "sublabel": "Pág 12, 112, 2, 44, 46, 98", "pos": [40, 220], "size": [180, 60] },
+    { "id": "pagos", "type": "frontend", "label": "Pagos", "sublabel": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82", "pos": [40, 380], "size": [320, 60] },
+    { "id": "eval-solicitudes", "type": "frontend", "label": "Eval. Solicitudes", "sublabel": "Pág 10, 13, 44", "pos": [40, 520], "size": [160, 60] },
+    { "id": "reportes", "type": "frontend", "label": "Reportes", "sublabel": "Pág 7, 24, 25, 40, 50, 68, 80, 81, 84, 96, 102", "pos": [40, 660], "size": [240, 60] },
+    { "id": "admin", "type": "frontend", "label": "Administración", "sublabel": "Pág 10000, 89, 93, 67, 57, 64, 66, 94, 167, 108, 173", "pos": [40, 800], "size": [260, 60] },
+    { "id": "apex-app", "type": "cloud", "label": "APEX Application", "sublabel": "Oracle APEX", "pos": [380, 80], "size": [160, 60] },
+    { "id": "plsql-pkg", "type": "backend", "label": "PL/SQL Packages", "sublabel": "PCK_FORMULARIO_BDG, PCK_CREDITOS_BDG, PCK_CUOTAS_BDG", "pos": [380, 220], "size": [220, 60] },
+    { "id": "plsql-util", "type": "backend", "label": "PL/SQL Utilidades", "sublabel": "PCK_ABMS_BANCO_GENTE, PCK_BANCOGENTE_UTIL", "pos": [380, 380], "size": [240, 60] },
+    { "id": "db-tables", "type": "database", "label": "Tablas", "sublabel": "T_FORMULARIOS_LINEA, T_LOTES, T_PRESTAMOS", "pos": [380, 520], "size": [200, 60] },
+    { "id": "db-views", "type": "database", "label": "Vistas", "sublabel": "RECHAVISTA, T_HISTORY_V, VT_ACTIVIDAD_USUARIOS", "pos": [380, 660], "size": [220, 60] },
+    { "id": "db-mviews", "type": "database", "label": "Materialized Views", "sublabel": "Reportes pesados", "pos": [380, 800], "size": [180, 60] },
+    { "id": "ext-bezza", "type": "external", "label": "BEZZA", "sublabel": "Pagos externos", "pos": [700, 220], "size": [120, 60] },
+    { "id": "ext-banco", "type": "external", "label": "Banco", "sublabel": "TXT archivos", "pos": [700, 380], "size": [120, 60] },
+    { "id": "ext-sintys", "type": "external", "label": "SINTYS", "sublabel": "Consulta externa", "pos": [700, 520], "size": [120, 60] },
+    { "id": "sec-eval", "type": "security", "label": "Seguridad Evaluación", "sublabel": "Schema 39869427953942828", "pos": [700, 80], "size": [160, 60] },
+    { "id": "sec-pagos", "type": "security", "label": "Seguridad Pagos", "sublabel": "Schema 46152469900353901", "pos": [700, 660], "size": [160, 60] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Front-end APEX (páginas activas)", "wraps": ["solicitudes", "evaluacion", "pagos", "eval-solicitudes", "reportes", "admin"] },
+    { "kind": "region", "label": "Backend PL/SQL", "wraps": ["apex-app", "plsql-pkg", "plsql-util"] },
+    { "kind": "region", "label": "Base de Datos Oracle", "wraps": ["db-tables", "db-views", "db-mviews"] },
+    { "kind": "region", "label": "Sistemas Externos", "wraps": ["ext-bezza", "ext-banco", "ext-sintys"] },
+    { "kind": "security-group", "label": "Control de Acceso", "wraps": ["sec-eval", "sec-pagos"] }
+  ],
+  "connections": [
+    { "id": "solicitudes-to-apex", "from": "solicitudes", "to": "apex-app" },
+    { "id": "evaluacion-to-apex", "from": "evaluacion", "to": "apex-app" },
+    { "id": "pagos-to-apex", "from": "pagos", "to": "apex-app" },
+    { "id": "eval-sol-to-apex", "from": "eval-solicitudes", "to": "apex-app" },
+    { "id": "reportes-to-apex", "from": "reportes", "to": "apex-app" },
+    { "id": "admin-to-apex", "from": "admin", "to": "apex-app" },
+    { "id": "apex-to-pkg", "from": "apex-app", "to": "plsql-pkg", "label": "calls" },
+    { "id": "apex-to-util", "from": "apex-app", "to": "plsql-util", "label": "calls" },
+    { "id": "pkg-to-tables", "from": "plsql-pkg", "to": "db-tables", "label": "SQL" },
+    { "id": "pkg-to-views", "from": "plsql-pkg", "to": "db-views", "label": "SQL" },
+    { "id": "util-to-tables", "from": "plsql-util", "to": "db-tables", "label": "SQL" },
+    { "id": "apex-to-bezza", "from": "apex-app", "to": "ext-bezza", "label": "API", "variant": "dashed" },
+    { "id": "apex-to-banco", "from": "apex-app", "to": "ext-banco", "label": "TXT files", "variant": "dashed" },
+    { "id": "apex-to-sintys", "from": "apex-app", "to": "ext-sintys", "label": "API", "variant": "dashed" },
+    { "id": "sec-eval-to-evaluacion", "from": "sec-eval", "to": "evaluacion", "label": "auth", "variant": "security" },
+    { "id": "sec-pagos-to-pagos", "from": "sec-pagos", "to": "pagos", "label": "auth", "variant": "security" },
+    { "id": "sec-eval-to-eval-sol", "from": "sec-eval", "to": "eval-solicitudes", "label": "auth", "variant": "security" },
+    { "id": "pagos-to-banco", "from": "pagos", "to": "ext-banco", "label": "TXT", "variant": "dashed" },
+    { "id": "pagos-to-bezza", "from": "pagos", "to": "ext-bezza", "label": ".hab file", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "5 Módulos de Negocio", "items": ["Solicitudes: ingreso y gestión de solicitudes", "Evaluación: armado de lotes y evaluación de solicitudes", "Pagos: gestión de lotes de pago, TXT banco, BEZZA", "Eval. Solicitudes: evaluación y solicitudes retenidas", "Reportes: reportes y estadísticas"] },
+    { "dot": "emerald", "title": "Arquitectura Técnica", "items": ["Front-end: APEX Application (Oracle APEX)", "Backend: PL/SQL Packages (PCK_FORMULARIO_BDG, PCK_CREDITOS_BDG, PCK_CUOTAS_BDG)", "Base de datos: 223+ tablas, vistas, materialized views", "Sistemas externos: BEZZA, Banco, SINTYS"] },
+    { "dot": "violet", "title": "Seguridad", "items": ["Schema Evaluación: ID 39869427953942828 (Evaluación, Solicitudes Aptas, SINTYS, Administración)", "Schema Pagos: ID 46152469900353901 (Pagos, Armar Lotes, Contrato Mutuo, etc.)", "Esquema público: sin restricción (Evaluación de Solicitudes, Reportes)"] },
+    { "dot": "amber", "title": "Objetos DDL Principales", "items": ["Tablas: T_FORMULARIOS_LINEA, T_LOTES, T_PRESTAMOS, T_BANCO_CUOTAS, T_BANCO_TXT, T_BANCO_PAGADOS", "Vistas: RECHAVISTAS, T_HISTORY_V, VT_ACTIVIDAD_USUARIOS", "Packages: PCK_FORMULARIO_BDG, PCK_CREDITOS_BDG, PCK_CUOTAS_BDG, PCK_ABMS_BANCO_GENTE", "Scheduler Jobs: procesos batch nocturnos"] }
+  ]
+}

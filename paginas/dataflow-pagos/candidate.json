@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Flujo de Datos de Pagos",
+    "output": "pagos-dataflow.html",
+    "quality_profile": "showcase"
+  },
+  "stages": [
+    { "label": "Input" },
+    { "label": "Procesamiento" },
+    { "label": "Output" }
+  ],
+  "nodes": [
+    { "id": "input", "type": "external", "label": "Archivos Input", "sublabel": "TXT Banco, BEZZA, CSV, JSON", "stage": 0, "row": 0, "width": 150 },
+    { "id": "proc", "type": "backend", "label": "Procesar", "sublabel": "Pág 54, 174, 91, 58", "stage": 1, "row": 0, "width": 160 },
+    { "id": "validar", "type": "security", "label": "Validar", "sublabel": "Automática", "stage": 1, "row": 1, "width": 160 },
+    { "id": "lote", "type": "backend", "label": "Generar Lote", "sublabel": "Pág 162", "stage": 2, "row": 0, "width": 160 },
+    { "id": "pagar", "type": "backend", "label": "A Pagar", "sublabel": "Pág 69", "stage": 2, "row": 1, "width": 160 },
+    { "id": "registrar", "type": "backend", "label": "Registrar", "sublabel": "Pág 174", "stage": 2, "row": 2, "width": 160 },
+    { "id": "output", "type": "external", "label": "Resultados", "sublabel": "TXT Banco, Estado Pago", "stage": 2, "row": 3, "width": 160 }
+  ],
+  "flows": [
+    { "id": "input-to-proc", "from": "input", "to": "proc", "label": "TXT/CSV/JSON", "labelAt": [200, 100] },
+    { "id": "proc-to-validar", "from": "proc", "to": "validar", "label": "Datos", "labelAt": [300, 100] },
+    { "id": "validar-to-lote", "from": "validar", "to": "lote", "label": "Válidos", "labelAt": [500, 100] },
+    { "id": "lote-to-pagar", "from": "lote", "to": "pagar", "label": "Lote", "labelAt": [530, 215] },
+    { "id": "pagar-to-registrar", "from": "pagar", "to": "registrar", "label": "Pago", "labelAt": [530, 315] },
+    { "id": "registrar-to-output", "from": "registrar", "to": "output", "label": "TXT + Estado", "labelAt": [530, 430] }
+  ]
+}

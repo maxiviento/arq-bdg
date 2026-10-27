@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "856af40f-4dfe-453c-bf1c-86246169a975",
+  "status": "current",
+  "command": "deliver",
+  "type": "dataflow",
+  "input": "paginas/dataflow-pagos/candidate.json",
+  "output": "paginas/dataflow-pagos/pagos-dataflow.html",
+  "specification": {
+    "sha256": "2e72fef16cfd21677a6dbdf883156c64838e6fe376fe4568bb419a55d4f9b21d",
+    "bytes": 1912
+  },
+  "artifact": {
+    "sha256": "a45636f2c430ee78c0b01390f3509c08c88b31301cd3e3ea82085c3884bcb132",
+    "bytes": 751057
+  }
+}

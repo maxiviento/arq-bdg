@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquitectura del Sistema de Gestión de Banco de la Gente APEX (version 18.1.0.00.45) — Casos de Uso</title>
+<style>
+  :root {
+    --bg: #0f1420; --bg-panel: #161d2e; --bg-hover: #1d2740;
+    --border: #2a3654; --text: #e6eaf3; --text-dim: #9aa7c2;
+    --accent: #5b9dff; --accent-soft: rgba(91,157,255,.14);
+    --ok: #34d399; --warn: #fbbf24;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  html[data-theme="light"] {
+    --bg: #f4f6fb; --bg-panel: #ffffff; --bg-hover: #eef2f9;
+    --border: #d4dce9; --text: #1c2440; --text-dim: #5a6a8c;
+    --accent: #2563eb; --accent-soft: rgba(37,99,235,.1);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg-panel); border-bottom: 1px solid var(--border);
+    padding: .75rem 1.25rem 0;
+  }
+  .head-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  h1 { font-size: 1.05rem; margin: 0; letter-spacing: .01em; }
+  h1 small { color: var(--text-dim); font-weight: 400; margin-left: .5rem; font-size: .8rem; }
+  #theme-toggle {
+    margin-left: auto; background: var(--bg-hover); color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: .3rem .7rem; cursor: pointer; font-size: .8rem;
+  }
+  #theme-toggle:hover { border-color: var(--accent); }
+  nav.tabs { display: flex; gap: .25rem; margin-top: .6rem; flex-wrap: wrap; }
+  nav.tabs button {
+    background: none; border: none; color: var(--text-dim);
+    padding: .55rem .9rem; cursor: pointer; font-size: .88rem;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  nav.tabs button:hover { color: var(--text); }
+  nav.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+  main { padding: 1.5rem 1.25rem 3rem; max-width: 1180px; margin: 0 auto; }
+  section[hidden] { display: none; }
+  h2 { font-size: 1.15rem; margin: 2rem 0 .75rem; padding-bottom: .35rem; border-bottom: 1px solid var(--border); }
+  h2:first-child { margin-top: 0; }
+  h3 { font-size: .98rem; margin: 1.4rem 0 .5rem; }
+  p { margin: .6rem 0; }
+  a { color: var(--accent); }
+  table { border-collapse: collapse; width: 100%; margin: .8rem 0; font-size: .86rem; }
+  th, td { border: 1px solid var(--border); padding: .4rem .6rem; text-align: left; vertical-align: top; }
+  th { background: var(--bg-hover); font-weight: 600; }
+  tr:hover td { background: var(--accent-soft); }
+  code { font-family: var(--mono); font-size: .82em; background: var(--bg-hover); padding: .1em .35em; border-radius: 4px; }
+  .lead { font-size: 1rem; color: var(--text); }
+  .lead strong { color: var(--accent); }
+  ol.quick { padding-left: 1.4rem; }
+  ol.quick li { margin: .3rem 0; }
+  .note { color: var(--text-dim); font-size: .84rem; }
+  .pill { display: inline-block; background: var(--accent-soft); color: var(--accent);
+          border-radius: 999px; padding: .05rem .6rem; font-size: .75rem; font-weight: 600; }
+  ul.check { list-style: none; padding-left: 0; }
+  ul.check li { margin: .3rem 0; padding-left: 1.6rem; position: relative; }
+  ul.check li::before { content: "✓"; position: absolute; left: .2rem; color: var(--ok); font-weight: 700; }
+  ul.check li.pending::before { content: "○"; color: var(--warn); }
+  .frame-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-panel); }
+  .frame-bar { display: flex; align-items: center; gap: .75rem; padding: .5rem .8rem;
+               border-bottom: 1px solid var(--border); font-size: .82rem; color: var(--text-dim); }
+  .frame-bar .spacer { margin-left: auto; }
+  .frame-bar a { font-size: .8rem; text-decoration: none; border: 1px solid var(--border);
+                 border-radius: 6px; padding: .2rem .6rem; }
+  .frame-bar a:hover { border-color: var(--accent); }
+  iframe { display: block; width: 100%; height: min(76vh, 860px); min-height: 560px; border: 0; background: #0f1420; }
+  html[data-theme="light"] iframe { background: #fff; }
+  @media (max-width: 720px) {
+    h1 small { display: none; }
+    main { padding: 1rem .8rem 2rem; }
+    iframe { height: 70vh; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="head-row">
+    <h1>Arquitectura del Sistema APEX <small>ver. 18.1.0.00.45 - Casos de Uso · 30 páginas activas · 5 módulos</small></h1>
+    <button id="theme-toggle" type="button">Tema: oscuro</button>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-documento" aria-controls="panel-documento" aria-selected="true">Documento</button>
+    <button role="tab" id="tab-arquitectura" aria-controls="panel-arquitectura" aria-selected="false">Arquitectura</button>
+    <button role="tab" id="tab-flujo" aria-controls="panel-flujo" aria-selected="false">Flujo Solicitud</button>
+    <button role="tab" id="tab-ciclo" aria-controls="panel-ciclo" aria-selected="false">Ciclo de Vida</button>
+    <button role="tab" id="tab-datos" aria-controls="panel-datos" aria-selected="false">Datos Pagos</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ DOCUMENTO ============ -->
+  <section id="panel-documento" role="tabpanel" aria-labelledby="tab-documento">
+    <p class="lead">Sistema de gestión de solicitudes de préstamo con <strong>30 casos de uso activos</strong> en 5 módulos, construido sobre Oracle APEX con backend PL/SQL y 223+ objetos de base de datos.</p>
+
+    <h2>Quick path</h2>
+    <ol class="quick">
+      <li><strong>Diagrama de Arquitectura</strong> (pestaña <a href="#arquitectura">Arquitectura</a>) — Mapa general del sistema con módulos, capas y sistemas externos</li>
+      <li><strong>Diagrama de Flujo</strong> (pestaña <a href="#flujo">Flujo Solicitud</a>) — Proceso principal de solicitud de préstamo desde ingreso hasta aprobación</li>
+      <li><strong>Diagrama de Ciclo de Vida</strong> (pestaña <a href="#ciclo">Ciclo de Vida</a>) — Estados: Cargada → Evaluación → Lote → Apta → Aprobada → Pagada → Contabilizada</li>
+      <li><strong>Diagrama de Flujo de Datos</strong> (pestaña <a href="#datos">Datos Pagos</a>) — Input → Procesamiento → Validación → Lote → Pagar → Registrar → Output</li>
+    </ol>
+
+    <h2>Casos de Uso por Módulo</h2>
+    <table>
+      <thead><tr><th>ID</th><th>Módulo</th><th>Caso de Uso</th><th>Página APEX</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Solicitudes</td><td>Solicitudes</td><td>107</td><td>✓ Activo</td></tr>
+        <tr><td>2</td><td>Evaluación</td><td>Armar Lotes</td><td>12, 11, 15, 16, 17</td><td>✓ Activo</td></tr>
+        <tr><td>3</td><td>Evaluación</td><td>Gestión de Lote</td><td>112</td><td>✓ Activo</td></tr>
+        <tr><td>4</td><td>Evaluación</td><td>Solicitudes Aptas</td><td>2</td><td>✓ Activo</td></tr>
+        <tr><td>5</td><td>Evaluación</td><td>Solicitudes Retenidas</td><td>44</td><td>✓ Activo</td></tr>
+        <tr><td>6</td><td>Evaluación</td><td>Solicitudes Rechazadas</td><td>46</td><td>✓ Activo</td></tr>
+        <tr><td>7</td><td>Evaluación</td><td>SINTYS</td><td>98</td><td>✓ Activo</td></tr>
+        <tr><td>8</td><td>Pagos</td><td>Armar Lotes de Pagos</td><td>162</td><td>✓ Activo</td></tr>
+        <tr><td>9</td><td>Pagos</td><td>A pagar con Lote</td><td>69</td><td>✓ Activo</td></tr>
+        <tr><td>10</td><td>Pagos</td><td>Lotes para Providencia</td><td>9</td><td>✓ Activo</td></tr>
+        <tr><td>11</td><td>Pagos</td><td>PDF Contratos Providencia MASIVO</td><td>90</td><td>✓ Activo</td></tr>
+        <tr><td>12</td><td>Pagos</td><td>Lotes para Contrato Mutuo</td><td>228</td><td>✓ Activo</td></tr>
+        <tr><td>13</td><td>Pagos</td><td>Cambio Masivo Firma Electrónica</td><td>152</td><td>✓ Activo</td></tr>
+        <tr><td>14</td><td>Pagos</td><td>Cargar Formularios MUTUO FIRMADO</td><td>33</td><td>✓ Activo</td></tr>
+        <tr><td>15</td><td>Pagos</td><td>Actualiza Suc/Sede y Genera TXT Banco</td><td>101</td><td>✓ Activo</td></tr>
+        <tr><td>16</td><td>Pagos</td><td>TXT para BANCO</td><td>54</td><td>✓ Activo</td></tr>
+        <tr><td>17</td><td>Pagos</td><td>Registrar Pago Emitido BEZZA</td><td>174</td><td>✓ Activo</td></tr>
+        <tr><td>18</td><td>Pagos</td><td>Cargar Txt del Banco</td><td>448</td><td>✓ Activo</td></tr>
+        <tr><td>19</td><td>Pagos</td><td>Cargar TXT Pagados BEZZA</td><td>175</td><td>✓ Activo</td></tr>
+        <tr><td>20</td><td>Pagos</td><td>Cargar Cuotas TXT/CSV</td><td>91</td><td>✓ Activo</td></tr>
+        <tr><td>21</td><td>Pagos</td><td>JSON Manual</td><td>58</td><td>✓ Activo</td></tr>
+        <tr><td>22</td><td>Pagos</td><td>Bajas Administrativas/Impagos</td><td>53</td><td>✓ Activo</td></tr>
+        <tr><td>23</td><td>Pagos</td><td>Cobertura Bancaria</td><td>43</td><td>✓ Activo</td></tr>
+        <tr><td>24</td><td>Pagos</td><td>Lotes de Expedientes</td><td>76</td><td>✓ Activo</td></tr>
+        <tr><td>25</td><td>Pagos</td><td>CSV Bloqueo/Desbloqueo Rentas</td><td>289</td><td>✓ Activo</td></tr>
+        <tr><td>26</td><td>Pagos</td><td>Altas Rentas</td><td>82</td><td>✓ Activo</td></tr>
+        <tr><td>27</td><td>Eval. Solicitudes</td><td>Evaluación de Solicitudes</td><td>10, 13</td><td>✓ Activo</td></tr>
+        <tr><td>28</td><td>Eval. Solicitudes</td><td>Solicitudes Retenidas</td><td>44</td><td>✓ Activo</td></tr>
+        <tr><td>29</td><td>Reportes</td><td>Reportes</td><td>7, 24, 25, 40, 50, 68, 80, 81, 84, 96, 102</td><td>✓ Activo</td></tr>
+        <tr><td>30</td><td>Administración</td><td>Administración</td><td>10000, 89, 93, 67, 57, 64, 66, 94, 167, 108, 173</td><td>✓ Activo</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Excluidos (NEVER):</strong> Solicitudes para Generar Pagos (32), Consulta Lotes Pago Emitido (38), Solicitudes para Plan de Cuotas (39), Índices/Resoluciones (83), Referencias Globales (4), History (22), Visual Básico (24), Comunicación (25)</p>
+
+    <h2>Arquitectura Técnica</h2>
+    <h3>Capas</h3>
+    <table>
+      <thead><tr><th>Capa</th><th>Componentes</th><th>Tecnología</th></tr></thead>
+      <tbody>
+        <tr><td>Front-end</td><td>6 módulos APEX (30 páginas activas)</td><td>Oracle APEX</td></tr>
+        <tr><td>Backend</td><td>PCK_FORMULARIO_BDG, PCK_CREDITOS_BDG, PCK_CUOTAS_BDG, PCK_ABMS_BANCO_GENTE, PCK_BANCOGENTE_UTIL</td><td>PL/SQL Packages</td></tr>
+        <tr><td>Base de Datos</td><td>223+ tablas, vistas, materialized views</td><td>Oracle Database</td></tr>
+        <tr><td>Externos</td><td>BEZZA (pagos), Banco (TXT), SINTYS (consulta)</td><td>APIs / Archivos</td></tr>
+      </tbody>
+    </table>
+    <h3>Seguridad</h3>
+    <table>
+      <thead><tr><th>Esquema</th><th>ID</th><th>Ámbito</th></tr></thead>
+      <tbody>
+        <tr><td>Evaluación</td><td><code>39869427953942828</code></td><td>Evaluación, Solicitudes Aptas, SINTYS, Administración</td></tr>
+        <tr><td>Pagos</td><td><code>46152469900353901</code></td><td>Pagos, Armar Lotes, Contrato Mutuo, etc.</td></tr>
+        <tr><td>Público</td><td>—</td><td>Evaluación de Solicitudes, Reportes</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Flujo de Solicitud de Préstamo</h2>
+    <p><strong>Path principal:</strong> Inicio → Cargar Solicitud (107) → Validar → Evaluar (10, 13) → Armar Lote (12, 11, 15, 16, 17) → Gestionar Lote (112) → Apta (2)</p>
+    <p><strong>Bifurcaciones:</strong> Retenida (44), Rechazada (46), Consulta SINTYS (98)</p>
+    <p>Ver detalle en la pestaña <a href="#flujo">Flujo Solicitud</a>.</p>
+
+    <h2>Ciclo de Vida de una Solicitud</h2>
+    <table>
+      <thead><tr><th>Estado</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Cargada</td><td>start</td><td>Solicitud ingresada en sistema</td></tr>
+        <tr><td>En Evaluación</td><td>active</td><td>Evaluador asignado, revisión en curso</td></tr>
+        <tr><td>En Lote</td><td>active</td><td>Lote FSC asignado, agrupada para evaluación</td></tr>
+        <tr><td>Apta</td><td>success</td><td>Aprobada, lista para pago</td></tr>
+        <tr><td>Aprobada</td><td>success</td><td>Préstamo aprobado formalmente</td></tr>
+        <tr><td>Pagada</td><td>success</td><td>Pago emitido (BEZZA/Banco)</td></tr>
+        <tr><td>Contabilizada</td><td>neutral</td><td>Fin del ciclo, registrada contablemente</td></tr>
+      </tbody>
+    </table>
+    <p>Ver detalle en la pestaña <a href="#ciclo">Ciclo de Vida</a>.</p>
+
+    <h2>Flujo de Datos de Pagos</h2>
+    <table>
+      <thead><tr><th>Etapa</th><th>Proceso</th><th>Páginas APEX</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Input</strong></td><td>Archivos Input</td><td>TXT Banco (448), BEZZA (175), CSV Rentas (91), JSON Manual (58)</td></tr>
+        <tr><td><strong>Procesamiento</strong></td><td>Procesar, Validar</td><td>Procesar Banco (54), BEZZA (174), Rentas (91), JSON (58), Validar (automática)</td></tr>
+        <tr><td><strong>Output</strong></td><td>Generar Lote, Pagar, Registrar</td><td>Generar Lote (162), A Pagar (69), Registrar (174), TXT Banco + Estado</td></tr>
+      </tbody>
+    </table>
+    <p>Ver detalle en la pestaña <a href="#datos">Datos Pagos</a>.</p>
+
+    <h2>Objetos DDL Principales (carpeta ddl/)</h2>
+    <table>
+      <thead><tr><th>Archivo</th><th>Objetos</th><th>Relevancia</th></tr></thead>
+      <tbody>
+        <tr><td><code>04_tables.sql</code></td><td>223 tablas</td><td>T_FORMULARIOS_LINEA, T_LOTES, T_PRESTAMOS, T_BANCO_CUOTAS, T_BANCO_TXT, T_BANCO_PAGADOS</td></tr>
+        <tr><td><code>06_views.sql</code></td><td>Vistas</td><td>RECHAVISTA, T_HISTORY_V, VT_ACTIVIDAD_USUARIOS</td></tr>
+        <tr><td><code>07_packages.sql</code></td><td>Packages</td><td>PCK_FORMULARIO_BDG, PCK_CREDITOS_BDG, PCK_CUOTAS_BDG, PCK_ABMS_BANCO_GENTE</td></tr>
+        <tr><td><code>08_package_bodies.sql</code></td><td>Bodies</td><td>Implementación de lógica de negocio</td></tr>
+        <tr><td><code>11_triggers.sql</code></td><td>Triggers</td><td>Auditoría, validaciones automáticas</td></tr>
+        <tr><td><code>15_scheduler_jobs.sql</code></td><td>Jobs</td><td>Procesos batch nocturnos (TXT Banco, BEZZA)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Checklist</h2>
+    <ul class="check">
+      <li>30 casos de uso activos identificados desde menú Desktop Navigation Menu</li>
+      <li>8 páginas con <code>disp_cond_type='NEVER'</code> excluidas</li>
+      <li>18 páginas sin <code>create_page</code> en dump excluidas</li>
+      <li>Diagrama de Arquitectura validado (validate, deliver, check, browser-check: pass)</li>
+      <li>Diagrama de Flujo validado (validate, deliver, check, browser-check: pass)</li>
+      <li>Diagrama de Ciclo de Vida validado (validate, deliver, check, browser-check: pass)</li>
+      <li>Diagrama de Flujo de Datos validado (validate, deliver, check, browser-check: pass)</li>
+    </ul>
+
+    <h2>Diagramas Generados</h2>
+    <table>
+      <thead><tr><th>Diagrama</th><th>Tipo</th><th>Archivo</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>Mapa de Casos de Uso</td><td>Architecture</td><td><code>paginas/architecture-apex-system/apex-system.html</code></td><td><span class="pill">Pass</span></td></tr>
+        <tr><td>Flujo de Solicitud</td><td>Workflow</td><td><code>paginas/workflow-solicitud-flow/solicitud-flow.html</code></td><td><span class="pill">Pass</span></td></tr>
+        <tr><td>Ciclo de Vida</td><td>Lifecycle</td><td><code>paginas/lifecycle-solicitud/solicitud-lifecycle.html</code></td><td><span class="pill">Pass</span></td></tr>
+        <tr><td>Flujo de Datos Pagos</td><td>Dataflow</td><td><code>paginas/dataflow-pagos/pagos-dataflow.html</code></td><td><span class="pill">Pass</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Documento realizado por quien fuera responsable de su proyección hasta Marzo de 2026. Gorski Leónidas Maximiliano</p>
+  </section>
+
+  <!-- ============ DIAGRAMAS ============ -->
+  <section id="panel-arquitectura" role="tabpanel" aria-labelledby="tab-arquitectura" hidden>
+    <div class="frame-wrap">
+      <div class="frame-bar">
+        <span>Mapa de Casos de Uso · tipo <strong>architecture</strong></span>
+        <span class="spacer"></span>
+        <a href="paginas/architecture-apex-system/apex-system.html" target="_blank" rel="noopener">Abrir completo</a>
+      </div>
+      <iframe data-src="paginas/architecture-apex-system/apex-system.html?embed=1" title="Diagrama de Arquitectura"></iframe>
+    </div>
+  </section>
+
+  <section id="panel-flujo" role="tabpanel" aria-labelledby="tab-flujo" hidden>
+    <div class="frame-wrap">
+      <div class="frame-bar">
+        <span>Flujo de Solicitud de Préstamo · tipo <strong>workflow</strong></span>
+        <span class="spacer"></span>
+        <a href="paginas/workflow-solicitud-flow/solicitud-flow.html" target="_blank" rel="noopener">Abrir completo</a>
+      </div>
+      <iframe data-src="paginas/workflow-solicitud-flow/solicitud-flow.html?embed=1" title="Diagrama de Flujo de Solicitud"></iframe>
+    </div>
+  </section>
+
+  <section id="panel-ciclo" role="tabpanel" aria-labelledby="tab-ciclo" hidden>
+    <div class="frame-wrap">
+      <div class="frame-bar">
+        <span>Ciclo de Vida de una Solicitud · tipo <strong>lifecycle</strong></span>
+        <span class="spacer"></span>
+        <a href="paginas/lifecycle-solicitud/solicitud-lifecycle.html" target="_blank" rel="noopener">Abrir completo</a>
+      </div>
+      <iframe data-src="paginas/lifecycle-solicitud/solicitud-lifecycle.html?embed=1" title="Diagrama de Ciclo de Vida"></iframe>
+    </div>
+  </section>
+
+  <section id="panel-datos" role="tabpanel" aria-labelledby="tab-datos" hidden>
+    <div class="frame-wrap">
+      <div class="frame-bar">
+        <span>Flujo de Datos de Pagos · tipo <strong>dataflow</strong></span>
+        <span class="spacer"></span>
+        <a href="paginas/dataflow-pagos/pagos-dataflow.html" target="_blank" rel="noopener">Abrir completo</a>
+      </div>
+      <iframe data-src="paginas/dataflow-pagos/pagos-dataflow.html?embed=1" title="Diagrama de Flujo de Datos de Pagos"></iframe>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var TABS = [
+    { hash: "documento",     tab: "tab-documento",     panel: "panel-documento" },
+    { hash: "arquitectura",  tab: "tab-arquitectura",  panel: "panel-arquitectura" },
+    { hash: "flujo",         tab: "tab-flujo",         panel: "panel-flujo" },
+    { hash: "ciclo",         tab: "tab-ciclo",         panel: "panel-ciclo" },
+    { hash: "datos",         tab: "tab-datos",         panel: "panel-datos" }
+  ];
+
+  function currentTheme() {
+    try { return localStorage.getItem("apex-doc-theme") || "dark"; } catch (e) { return "dark"; }
+  }
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    var btn = document.getElementById("theme-toggle");
+    btn.textContent = theme === "dark" ? "Tema: oscuro" : "Tema: claro";
+    btn.setAttribute("aria-label", theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+    // Sincroniza el tema de los visores embebidos (soportan ?theme=dark|light).
+    document.querySelectorAll("iframe[data-src]").forEach(function (f) {
+      var base = f.getAttribute("data-src").split("?")[0];
+      f.setAttribute("data-src", base + "?embed=1&theme=" + theme);
+      if (f.src) { f.src = base + "?embed=1&theme=" + theme; }
+    });
+  }
+  document.getElementById("theme-toggle").addEventListener("click", function () {
+    var next = currentTheme() === "dark" ? "light" : "dark";
+    try { localStorage.setItem("apex-doc-theme", next); } catch (e) {}
+    applyTheme(next);
+  });
+  applyTheme(currentTheme());
+
+  function activate(name, pushHash) {
+    var entry = TABS.filter(function (t) { return t.hash === name; })[0] || TABS[0];
+    TABS.forEach(function (t) {
+      var selected = t.hash === entry.hash;
+      document.getElementById(t.tab).setAttribute("aria-selected", selected ? "true" : "false");
+      document.getElementById(t.panel).hidden = !selected;
+    });
+    // Carga diferida: el iframe recibe su src solo al abrir su pestaña.
+    var panel = document.getElementById(entry.panel);
+    var frame = panel && panel.querySelector("iframe[data-src]");
+    if (frame && !frame.getAttribute("src")) {
+      frame.setAttribute("src", frame.getAttribute("data-src"));
+    }
+    if (pushHash && location.hash !== "#" + entry.hash) {
+      history.replaceState(null, "", "#" + entry.hash);
+    }
+  }
+
+  TABS.forEach(function (t) {
+    document.getElementById(t.tab).addEventListener("click", function () { activate(t.hash, true); });
+  });
+  window.addEventListener("hashchange", function () { activate(location.hash.replace("#", ""), false); });
+  activate(location.hash.replace("#", "") || "documento", false);
+})();
+</script>
+</body>
+</html>

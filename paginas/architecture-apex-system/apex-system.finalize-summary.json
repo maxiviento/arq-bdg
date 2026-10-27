@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "paginas/architecture-apex-system/candidate.json",
+    "sha256": "26822da25c2248c38317dc83505c2d86d8bc06857c583a29e904340ed25491d0",
+    "bytes": 6599
+  },
+  "artifact": {
+    "path": "paginas/architecture-apex-system/apex-system.html",
+    "sha256": "3aebfb56b4098358a18ce7be105e98e5cb1954b0205e78ddc32d4ca99c7e9350",
+    "bytes": 788143
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "paginas/architecture-apex-system/apex-system.finalize.json",
+    "summaryReceipt": "paginas/architecture-apex-system/apex-system.finalize-summary.json",
+    "browserCheckReceipt": "paginas/architecture-apex-system/apex-system.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-09T00:06:24.951Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 5640,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 26,
+      "routesOverSuggestedBends": 13,
+      "routesOverSuggestedStretch": 4
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "evaluacion-to-apex",
+            "from": "evaluacion",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 1,
+            "artifactIndex": 2
+          },
+          "right": {
+            "id": "eval-sol-to-apex",
+            "from": "eval-solicitudes",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 3,
+            "artifactIndex": 4
+          },
+          "point": [
+            356,
+            164
+          ],
+          "sharedNode": "apex-app"
+        },
+        {
+          "left": {
+            "id": "pagos-to-apex",
+            "from": "pagos",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "right": {
+            "id": "eval-sol-to-apex",
+            "from": "eval-solicitudes",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 3,
+            "artifactIndex": 4
+          },
+          "point": [
+            37,
+            410
+          ],
+          "sharedNode": "apex-app"
+        },
+        {
+          "left": {
+            "id": "pagos-to-apex",
+            "from": "pagos",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "right": {
+            "id": "admin-to-apex",
+            "from": "admin",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "point": [
+            432,
+            56
+          ],
+          "sharedNode": "apex-app"
+        },
+        {
+          "left": {
+            "id": "pagos-to-apex",
+            "from": "pagos",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "right": {
+            "id": "apex-to-sintys",
+            "from": "apex-app",
+            "to": "ext-sintys",
+            "label": "API",
+            "collectionIndex": 13,
+            "artifactIndex": 14
+          },
+          "point": [
+            446,
+            56
+          ],
+          "sharedNode": "apex-app"
+        },
+        {
+          "left": {
+            "id": "reportes-to-apex",
+            "from": "reportes",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 4,
+            "artifactIndex": 5
+          },
+          "right": {
+            "id": "admin-to-apex",
+            "from": "admin",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "point": [
+            432,
+            34
+          ],
+          "sharedNode": "apex-app"
+        },
+        {
+          "left": {
+            "id": "apex-to-pkg",
+            "from": "apex-app",
+            "to": "plsql-pkg",
+            "label": "calls",
+            "collectionIndex": 6,
+            "artifactIndex": 7
+          },
+          "right": {
+            "id": "apex-to-util",
+            "from": "apex-app",
+            "to": "plsql-util",
+            "label": "calls",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "point": [
+            474,
+            180
+          ],
+          "sharedNode": "apex-app"
+        },
+        {
+          "left": {
+            "id": "apex-to-pkg",
+            "from": "apex-app",
+            "to": "plsql-pkg",
+            "label": "calls",
+            "collectionIndex": 6,
+            "artifactIndex": 7
+          },
+          "right": {
+            "id": "sec-eval-to-evaluacion",
+            "from": "sec-eval",
+            "to": "evaluacion",
+            "label": "auth",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            490,
+            216
+          ]
+        },
+        {
+          "left": {
+            "id": "apex-to-util",
+            "from": "apex-app",
+            "to": "plsql-util",
+            "label": "calls",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "right": {
+            "id": "sec-eval-to-evaluacion",
+            "from": "sec-eval",
+            "to": "evaluacion",
+            "label": "auth",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            470.6,
+            216
+          ]
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "evaluacion-to-apex",
+            "from": "evaluacion",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 1,
+            "artifactIndex": 2
+          },
+          "bends": 3,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "pagos-to-apex",
+            "from": "pagos",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "bends": 3,
+          "stretch": 1.128
+        },
+        {
+          "relationship": {
+            "id": "eval-sol-to-apex",
+            "from": "eval-solicitudes",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 3,
+            "artifactIndex": 4
+          },
+          "bends": 4,
+          "stretch": 1.227
+        },
+        {
+          "relationship": {
+            "id": "reportes-to-apex",
+            "from": "reportes",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 4,
+            "artifactIndex": 5
+          },
+          "bends": 4,
+          "stretch": 1.421
+        },
+        {
+          "relationship": {
+            "id": "admin-to-apex",
+            "from": "admin",
+            "to": "apex-app",
+            "label": "",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "bends": 4,
+          "stretch": 1.47
+        },
+        {
+          "relationship": {
+            "id": "apex-to-util",
+            "from": "apex-app",
+            "to": "plsql-util",
+            "label": "calls",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "bends": 4,
+          "stretch": 1.872
+        },
+        {
+          "relationship": {
+            "id": "pkg-to-views",
+            "from": "plsql-pkg",
+            "to": "db-views",
+            "label": "SQL",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "bends": 4,
+          "stretch": 2.034,
+          "directCorridorBlockers": [
+            {
+              "id": "plsql-util",
+              "label": "PL/SQL Utilidades",
+              "box": [
+                380,
+                380,
+                240,
+                60
+              ]
+            },
+            {
+              "id": "db-tables",
+              "label": "Tablas",
+              "box": [
+                380,
+                520,
+                200,
+                60
+              ]
+            }
+          ]
+        },
+        {
+          "relationship": {
+            "id": "apex-to-banco",
+            "from": "apex-app",
+            "to": "ext-banco",
+            "label": "TXT files",
+            "collectionIndex": 12,
+            "artifactIndex": 13
+          },
+          "bends": 4,
+          "stretch": 1
+        }
+      ],
+      "truncated": true
+    },
+    "hints": [
+      "evaluacion → apex-app and eval-solicitudes → apex-app cross next to apex-app: move node evaluacion or eval-solicitudes so the two reach apex-app from different sides (for example one level with it, one directly above or below it).",
+      "pagos → apex-app and eval-solicitudes → apex-app cross next to apex-app: move node pagos or eval-solicitudes so the two reach apex-app from different sides (for example one level with it, one directly above or below it).",
+      "pagos → apex-app and admin → apex-app cross next to apex-app: move node pagos or admin so the two reach apex-app from different sides (for example one level with it, one directly above or below it).",
+      "pagos → apex-app and apex-app → ext-sintys cross next to apex-app: move node pagos or ext-sintys so the two reach apex-app from different sides (for example one level with it, one directly above or below it).",
+      "reportes → apex-app and admin → apex-app cross next to apex-app: move node reportes or admin so the two reach apex-app from different sides (for example one level with it, one directly above or below it).",
+      "apex-app → plsql-pkg and apex-app → plsql-util cross next to apex-app: move node plsql-pkg or plsql-util so the two reach apex-app from different sides (for example one level with it, one directly above or below it).",
+      "apex-app → plsql-pkg crosses sec-eval → evaluacion: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "apex-app → plsql-util crosses sec-eval → evaluacion: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

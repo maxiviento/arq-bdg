@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Ciclo de Vida de una Solicitud",
+    "output": "solicitud-lifecycle.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "main", "label": "Ciclo de Vida" }
+  ],
+  "states": [
+    { "id": "cargada", "type": "start", "label": "Cargada", "sublabel": "Solicitud ingresada", "lane": "main", "col": 0 },
+    { "id": "en-evaluacion", "type": "active", "label": "En Evaluación", "sublabel": "Evaluador asignado", "lane": "main", "col": 1 },
+    { "id": "en-lote", "type": "active", "label": "En Lote", "sublabel": "Lote FSC asignado", "lane": "main", "col": 2 },
+    { "id": "apta", "type": "success", "label": "Apta", "sublabel": "Lista para pago", "lane": "main", "col": 3 },
+    { "id": "aprobada", "type": "success", "label": "Aprobada", "sublabel": "Préstamo aprobado", "lane": "main", "col": 4 },
+    { "id": "pagada", "type": "success", "label": "Pagada", "sublabel": "Pago emitido", "lane": "main", "col": 0, "yOffset": 160 },
+    { "id": "contabilizada", "type": "neutral", "label": "Contabilizada", "sublabel": "Fin del ciclo", "lane": "main", "col": 1, "yOffset": 160 }
+  ],
+  "transitions": [
+    { "id": "cargada-to-evaluacion", "from": "cargada", "to": "en-evaluacion", "label": "Asignar" },
+    { "id": "evaluacion-to-lote", "from": "en-evaluacion", "to": "en-lote", "label": "Armar lote" },
+    { "id": "lote-to-apta", "from": "en-lote", "to": "apta", "label": "Aprobar" },
+    { "id": "apta-to-aprobada", "from": "apta", "to": "aprobada", "label": "Confirmar" },
+    { "id": "aprobada-to-pagada", "from": "aprobada", "to": "pagada", "label": "Emitir pago" },
+    { "id": "pagada-to-contabilizada", "from": "pagada", "to": "contabilizada", "label": "Contabilizar" }
+  ]
+}

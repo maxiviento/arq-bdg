@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flujo de Solicitud de Préstamo",
+    "output": "solicitud-flow.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "main", "label": "Proceso Principal" }
+  ],
+  "nodes": [
+    { "id": "inicio", "lane": "main", "col": 0, "type": "frontend", "label": "Inicio", "sublabel": "Sistema APEX", "width": 140 },
+    { "id": "cargar-solicitud", "lane": "main", "col": 1, "type": "frontend", "label": "Cargar Solicitud", "sublabel": "Pág 107", "width": 160 },
+    { "id": "validar-solicitud", "lane": "main", "col": 2, "type": "security", "label": "Validar", "sublabel": "Automática", "width": 140 },
+    { "id": "evaluar-solicitud", "lane": "main", "col": 3, "type": "frontend", "label": "Evaluar", "sublabel": "Pág 10, 13", "width": 140 },
+    { "id": "armar-lote", "lane": "main", "col": 4, "type": "frontend", "label": "Armar Lote", "sublabel": "Pág 12, 11, 15, 16, 17", "width": 160 },
+    { "id": "gestionar-lote", "lane": "main", "col": 5, "type": "frontend", "label": "Gestionar Lote", "sublabel": "Pág 112", "width": 160 },
+    { "id": "solicitud-apta", "lane": "main", "col": 5, "type": "frontend", "label": "Apta", "sublabel": "Pág 2", "width": 120, "yOffset": 80 }
+  ],
+  "edges": [
+    { "id": "inicio-to-cargar", "from": "inicio", "to": "cargar-solicitud", "role": "main" },
+    { "id": "cargar-to-validar", "from": "cargar-solicitud", "to": "validar-solicitud", "role": "main" },
+    { "id": "validar-to-evaluar", "from": "validar-solicitud", "to": "evaluar-solicitud", "label": "Válida", "role": "main" },
+    { "id": "evaluar-to-armar", "from": "evaluar-solicitud", "to": "armar-lote", "role": "main" },
+    { "id": "armar-to-gestionar", "from": "armar-lote", "to": "gestionar-lote", "role": "main" },
+    { "id": "gestionar-to-apta", "from": "gestionar-lote", "to": "solicitud-apta", "label": "Aprobada", "role": "main" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "fa212550-cb23-4d62-86cf-c267cf56c65e",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "paginas/lifecycle-solicitud/candidate.json",
+  "output": "paginas/lifecycle-solicitud/solicitud-lifecycle.html",
+  "specification": {
+    "sha256": "028fa6ec30a419755ffe78337219004c8a371b130ebf3e691d4060db227241de",
+    "bytes": 1781
+  },
+  "artifact": {
+    "sha256": "2be04ac4ad9ff6d925deb971c38a0c06c041e844e58eaeaf1b50f67dfbdf05f1",
+    "bytes": 754901
+  }
+}

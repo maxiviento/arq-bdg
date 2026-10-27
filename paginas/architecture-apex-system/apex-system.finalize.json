@@ -1,0 +1,1739 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-10T00:02:49.872Z",
+  "specification": {
+    "path": "paginas/architecture-apex-system/candidate.json",
+    "sha256": "26822da25c2248c38317dc83505c2d86d8bc06857c583a29e904340ed25491d0",
+    "bytes": 6599
+  },
+  "artifact": {
+    "path": "paginas/architecture-apex-system/apex-system.html",
+    "sha256": "3aebfb56b4098358a18ce7be105e98e5cb1954b0205e78ddc32d4ca99c7e9350",
+    "bytes": 788143
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "~/.local/share/mise/installs/node/25.9.0/bin/node",
+        "~/.agents/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "paginas/architecture-apex-system/candidate.json",
+        "paginas/architecture-apex-system/apex-system.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "26822da25c2248c38317dc83505c2d86d8bc06857c583a29e904340ed25491d0",
+          "bytes": 6599
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1099,
+      "command": [
+        "~/.local/share/mise/installs/node/25.9.0/bin/node",
+        "~/.agents/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "paginas/architecture-apex-system/candidate.json",
+        "paginas/architecture-apex-system/apex-system.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "981b005a-4aeb-445a-8d14-f3c207b8feda",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "paginas/architecture-apex-system/candidate.json",
+        "output": "paginas/architecture-apex-system/apex-system.html",
+        "specification": {
+          "sha256": "26822da25c2248c38317dc83505c2d86d8bc06857c583a29e904340ed25491d0",
+          "bytes": 6599
+        },
+        "artifact": {
+          "sha256": "3aebfb56b4098358a18ce7be105e98e5cb1954b0205e78ddc32d4ca99c7e9350",
+          "bytes": 788143
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 304,
+      "command": [
+        "~/.local/share/mise/installs/node/25.9.0/bin/node",
+        "~/.agents/skills/archify/bin/archify.mjs",
+        "check",
+        "paginas/architecture-apex-system/apex-system.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "paginas/architecture-apex-system/apex-system.html",
+        "artifact": {
+          "sha256": "3aebfb56b4098358a18ce7be105e98e5cb1954b0205e78ddc32d4ca99c7e9350",
+          "bytes": 788143
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 26,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.1,
+            "maxBends": 5,
+            "routesOverSuggestedBends": 13,
+            "maxStretch": 2.034,
+            "routesOverSuggestedStretch": 4,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 30,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "evaluacion-to-apex",
+                  "from": "evaluacion",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "right": {
+                  "id": "eval-sol-to-apex",
+                  "from": "eval-solicitudes",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "point": [
+                  356,
+                  164
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "pagos-to-apex",
+                  "from": "pagos",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "eval-sol-to-apex",
+                  "from": "eval-solicitudes",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "point": [
+                  37,
+                  410
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "pagos-to-apex",
+                  "from": "pagos",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "admin-to-apex",
+                  "from": "admin",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "point": [
+                  432,
+                  56
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "pagos-to-apex",
+                  "from": "pagos",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "apex-to-sintys",
+                  "from": "apex-app",
+                  "to": "ext-sintys",
+                  "label": "API",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "point": [
+                  446,
+                  56
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "reportes-to-apex",
+                  "from": "reportes",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "right": {
+                  "id": "admin-to-apex",
+                  "from": "admin",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "point": [
+                  432,
+                  34
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "apex-to-pkg",
+                  "from": "apex-app",
+                  "to": "plsql-pkg",
+                  "label": "calls",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "right": {
+                  "id": "apex-to-util",
+                  "from": "apex-app",
+                  "to": "plsql-util",
+                  "label": "calls",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "point": [
+                  474,
+                  180
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "apex-to-pkg",
+                  "from": "apex-app",
+                  "to": "plsql-pkg",
+                  "label": "calls",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "right": {
+                  "id": "sec-eval-to-evaluacion",
+                  "from": "sec-eval",
+                  "to": "evaluacion",
+                  "label": "auth",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  490,
+                  216
+                ]
+              },
+              {
+                "left": {
+                  "id": "apex-to-util",
+                  "from": "apex-app",
+                  "to": "plsql-util",
+                  "label": "calls",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "sec-eval-to-evaluacion",
+                  "from": "sec-eval",
+                  "to": "evaluacion",
+                  "label": "auth",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  470.6,
+                  216
+                ]
+              },
+              {
+                "left": {
+                  "id": "apex-to-util",
+                  "from": "apex-app",
+                  "to": "plsql-util",
+                  "label": "calls",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "pagos-to-bezza",
+                  "from": "pagos",
+                  "to": "ext-bezza",
+                  "label": ".hab file",
+                  "collectionIndex": 18,
+                  "artifactIndex": 19
+                },
+                "point": [
+                  358,
+                  327
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-tables",
+                  "from": "plsql-pkg",
+                  "to": "db-tables",
+                  "label": "SQL",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "right": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "point": [
+                  624,
+                  352
+                ],
+                "sharedNode": "plsql-pkg"
+              },
+              {
+                "left": {
+                  "id": "pkg-to-tables",
+                  "from": "plsql-pkg",
+                  "to": "db-tables",
+                  "label": "SQL",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "right": {
+                  "id": "sec-pagos-to-pagos",
+                  "from": "sec-pagos",
+                  "to": "pagos",
+                  "label": "auth",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "point": [
+                  624,
+                  517
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-tables",
+                  "from": "plsql-pkg",
+                  "to": "db-tables",
+                  "label": "SQL",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "right": {
+                  "id": "pagos-to-banco",
+                  "from": "pagos",
+                  "to": "ext-banco",
+                  "label": "TXT",
+                  "collectionIndex": 17,
+                  "artifactIndex": 18
+                },
+                "point": [
+                  624,
+                  464
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-tables",
+                  "from": "plsql-pkg",
+                  "to": "db-tables",
+                  "label": "SQL",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "right": {
+                  "id": "pagos-to-bezza",
+                  "from": "pagos",
+                  "to": "ext-bezza",
+                  "label": ".hab file",
+                  "collectionIndex": 18,
+                  "artifactIndex": 19
+                },
+                "point": [
+                  624,
+                  327
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "right": {
+                  "id": "apex-to-banco",
+                  "from": "apex-app",
+                  "to": "ext-banco",
+                  "label": "TXT files",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "point": [
+                  658.7272727272727,
+                  352
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "right": {
+                  "id": "sec-pagos-to-pagos",
+                  "from": "sec-pagos",
+                  "to": "pagos",
+                  "label": "auth",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "point": [
+                  676,
+                  636
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "right": {
+                  "id": "sec-eval-to-eval-sol",
+                  "from": "sec-eval",
+                  "to": "eval-solicitudes",
+                  "label": "auth",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "point": [
+                  697,
+                  583
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "right": {
+                  "id": "pagos-to-banco",
+                  "from": "pagos",
+                  "to": "ext-banco",
+                  "label": "TXT",
+                  "collectionIndex": 17,
+                  "artifactIndex": 18
+                },
+                "point": [
+                  697,
+                  464
+                ]
+              },
+              {
+                "left": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "right": {
+                  "id": "pagos-to-bezza",
+                  "from": "pagos",
+                  "to": "ext-bezza",
+                  "label": ".hab file",
+                  "collectionIndex": 18,
+                  "artifactIndex": 19
+                },
+                "point": [
+                  497,
+                  327
+                ]
+              },
+              {
+                "left": {
+                  "id": "util-to-tables",
+                  "from": "plsql-util",
+                  "to": "db-tables",
+                  "label": "SQL",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "right": {
+                  "id": "sec-pagos-to-pagos",
+                  "from": "sec-pagos",
+                  "to": "pagos",
+                  "label": "auth",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "point": [
+                  487,
+                  517
+                ]
+              },
+              {
+                "left": {
+                  "id": "util-to-tables",
+                  "from": "plsql-util",
+                  "to": "db-tables",
+                  "label": "SQL",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "right": {
+                  "id": "pagos-to-banco",
+                  "from": "pagos",
+                  "to": "ext-banco",
+                  "label": "TXT",
+                  "collectionIndex": 17,
+                  "artifactIndex": 18
+                },
+                "point": [
+                  487,
+                  464
+                ]
+              },
+              {
+                "left": {
+                  "id": "apex-to-bezza",
+                  "from": "apex-app",
+                  "to": "ext-bezza",
+                  "label": "API",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "right": {
+                  "id": "apex-to-banco",
+                  "from": "apex-app",
+                  "to": "ext-banco",
+                  "label": "TXT files",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "point": [
+                  620,
+                  164
+                ],
+                "sharedNode": "apex-app"
+              },
+              {
+                "left": {
+                  "id": "apex-to-bezza",
+                  "from": "apex-app",
+                  "to": "ext-bezza",
+                  "label": "API",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "right": {
+                  "id": "sec-eval-to-evaluacion",
+                  "from": "sec-eval",
+                  "to": "evaluacion",
+                  "label": "auth",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  620,
+                  216
+                ]
+              },
+              {
+                "left": {
+                  "id": "apex-to-banco",
+                  "from": "apex-app",
+                  "to": "ext-banco",
+                  "label": "TXT files",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "right": {
+                  "id": "sec-eval-to-evaluacion",
+                  "from": "sec-eval",
+                  "to": "evaluacion",
+                  "label": "auth",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  658,
+                  216
+                ]
+              },
+              {
+                "left": {
+                  "id": "apex-to-banco",
+                  "from": "apex-app",
+                  "to": "ext-banco",
+                  "label": "TXT files",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "right": {
+                  "id": "pagos-to-bezza",
+                  "from": "pagos",
+                  "to": "ext-bezza",
+                  "label": ".hab file",
+                  "collectionIndex": 18,
+                  "artifactIndex": 19
+                },
+                "point": [
+                  658,
+                  327
+                ]
+              },
+              {
+                "left": {
+                  "id": "apex-to-sintys",
+                  "from": "apex-app",
+                  "to": "ext-sintys",
+                  "label": "API",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "right": {
+                  "id": "sec-eval-to-eval-sol",
+                  "from": "sec-eval",
+                  "to": "eval-solicitudes",
+                  "label": "auth",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "point": [
+                  823,
+                  550
+                ]
+              },
+              {
+                "left": {
+                  "id": "sec-pagos-to-pagos",
+                  "from": "sec-pagos",
+                  "to": "pagos",
+                  "label": "auth",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "right": {
+                  "id": "sec-eval-to-eval-sol",
+                  "from": "sec-eval",
+                  "to": "eval-solicitudes",
+                  "label": "auth",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "point": [
+                  676,
+                  583
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "evaluacion-to-apex",
+                  "from": "evaluacion",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "bends": 3,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "pagos-to-apex",
+                  "from": "pagos",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "bends": 3,
+                "stretch": 1.128
+              },
+              {
+                "relationship": {
+                  "id": "eval-sol-to-apex",
+                  "from": "eval-solicitudes",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "bends": 4,
+                "stretch": 1.227
+              },
+              {
+                "relationship": {
+                  "id": "reportes-to-apex",
+                  "from": "reportes",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "bends": 4,
+                "stretch": 1.421
+              },
+              {
+                "relationship": {
+                  "id": "admin-to-apex",
+                  "from": "admin",
+                  "to": "apex-app",
+                  "label": "",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "bends": 4,
+                "stretch": 1.47
+              },
+              {
+                "relationship": {
+                  "id": "apex-to-util",
+                  "from": "apex-app",
+                  "to": "plsql-util",
+                  "label": "calls",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "bends": 4,
+                "stretch": 1.872
+              },
+              {
+                "relationship": {
+                  "id": "pkg-to-views",
+                  "from": "plsql-pkg",
+                  "to": "db-views",
+                  "label": "SQL",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "bends": 4,
+                "stretch": 2.034,
+                "directCorridorBlockers": [
+                  {
+                    "id": "plsql-util",
+                    "label": "PL/SQL Utilidades",
+                    "box": [
+                      380,
+                      380,
+                      240,
+                      60
+                    ]
+                  },
+                  {
+                    "id": "db-tables",
+                    "label": "Tablas",
+                    "box": [
+                      380,
+                      520,
+                      200,
+                      60
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "id": "apex-to-banco",
+                  "from": "apex-app",
+                  "to": "ext-banco",
+                  "label": "TXT files",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "apex-to-sintys",
+                  "from": "apex-app",
+                  "to": "ext-sintys",
+                  "label": "API",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "bends": 3,
+                "stretch": 1.237
+              },
+              {
+                "relationship": {
+                  "id": "sec-eval-to-evaluacion",
+                  "from": "sec-eval",
+                  "to": "evaluacion",
+                  "label": "auth",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "sec-pagos-to-pagos",
+                  "from": "sec-pagos",
+                  "to": "pagos",
+                  "label": "auth",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "bends": 3,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "sec-eval-to-eval-sol",
+                  "from": "sec-eval",
+                  "to": "eval-solicitudes",
+                  "label": "auth",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "bends": 5,
+                "stretch": 1.154
+              },
+              {
+                "relationship": {
+                  "id": "pagos-to-bezza",
+                  "from": "pagos",
+                  "to": "ext-bezza",
+                  "label": ".hab file",
+                  "collectionIndex": 18,
+                  "artifactIndex": 19
+                },
+                "bends": 3,
+                "stretch": 1
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 17,
+            "emptyTopRatio": 0.018,
+            "occupiedTop": 17,
+            "viewBoxTop": 0,
+            "canvasHeight": 948,
+            "typicalNodeHeight": 60,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "legacy-930",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 930,
+            "actualBudgetPx": 930,
+            "limit": "legacy",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": false,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "node",
+              "id": "pagos"
+            },
+            "minimumSourceTextPx": 6.1,
+            "minimumProjectedTextPx": 6.1,
+            "semanticTextCount": 52
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "981b005a-4aeb-445a-8d14-f3c207b8feda"
+      }
+    },
+    "browser-check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 3852,
+      "command": [
+        "~/.local/share/mise/installs/node/25.9.0/bin/node",
+        "~/.agents/skills/archify/bin/archify.mjs",
+        "browser-check",
+        "paginas/architecture-apex-system/apex-system.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "pass",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "981b005a-4aeb-445a-8d14-f3c207b8feda",
+        "artifact": {
+          "path": "paginas/architecture-apex-system/apex-system.html",
+          "sha256": "3aebfb56b4098358a18ce7be105e98e5cb1954b0205e78ddc32d4ca99c7e9350",
+          "bytes": 788143
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "/usr/bin/chromium"
+        },
+        "diagnostics": [],
+        "containment": {
+          "status": "pass",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 1091,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 52,
+                "diagramChromePx": 78,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1157,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1157,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1111,
+              "diagramWidth": 1061,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 1082,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "themeStates": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            }
+          ]
+        },
+        "readability": {
+          "status": "pass",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 1091,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 52,
+                "diagramChromePx": 78,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1157,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1157,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1111,
+              "diagramWidth": 1061,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 1082,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "viewerChrome": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 1091,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 52,
+                "diagramChromePx": 78,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1157,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1157,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 930,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 948,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1111,
+              "diagramWidth": 1061,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 1082,
+                "cardsPx": 0,
+                "viewBoxHeight": 948
+              },
+              "viewBoxWidth": 930,
+              "minimumProjectedNodeTextPx": 6.1,
+              "minimumProjectedNonEdgeTextPx": 6.1,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "Pág 162, 69, 9, 90, 228, 152, 33, 101, 54, 174, 448, 175, 91, 58, 53, 43, 76, 289, 82",
+              "minimumProjectedNodeTextDetail": "context",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "node",
+                "id": "pagos"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "apex-system.browser-check.json",
+          "files": []
+        }
+      }
+    }
+  },
+  "diagnostics": [],
+  "evidence": {
+    "receipt": "paginas/architecture-apex-system/apex-system.finalize.json",
+    "summaryReceipt": "paginas/architecture-apex-system/apex-system.finalize-summary.json",
+    "browserCheckReceipt": "paginas/architecture-apex-system/apex-system.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-10T00:02:55.513Z",
+  "durationMs": 5640,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-09T00:06:24.951Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}
